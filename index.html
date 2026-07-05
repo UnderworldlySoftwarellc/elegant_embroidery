@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embroidery Collection</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #fdf6f9, #f4f8fb);
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f8e8ee;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    color: #a6788f;
+}
+
+header p {
+    margin-top: 10px;
+}
+
+/* Controls */
+.controls {
+    text-align: center;
+    padding: 20px;
+}
+
+button, input {
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    border: none;
+    font-size: 1rem;
+}
+
+button {
+    background: #eac7d5;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #dba4ba;
+}
+
+input {
+    width: min(200px, 80vw);
+}
+
+/* Grid */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card */
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.card h3 {
+    padding: 10px;
+    margin: 0;
+    color: #a6788f;
+}
+
+.card button {
+    margin: 10px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background: white;
+    margin: 8% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.modal img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Contact */
+.contact {
+    padding: 40px;
+    background: #f8e8ee;
+    text-align: center;
+}
+
+.contact input, .contact textarea {
+    width: min(80%, 400px);
+    margin: 10px auto;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.contact button {
+    background: #a6788f;
+    color: white;
+}
+@media (max-width: 768px) {
+    header {
+        padding: 35px 15px;
+    }
+
+    header h1 {
+        font-size: 2.1em;
+    }
+
+    .controls {
+        padding: 15px 10px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .card img {
+        height: 220px;
+    }
+
+    .contact {
+        padding: 25px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    button, input {
+        width: calc(100% - 10px);
+        margin: 6px 0;
+    }
+
+    .card button {
+        width: calc(100% - 20px);
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>✨ Embroidered Apparel ✨</h1>
+    <p>Custom shirts, tanks & sweatshirts</p>
+</header>
+
+<div class="controls">
+    <input type="text" id="search" placeholder="Search...">
+    <br>
+    <button onclick="filterSelection('all')">All</button>
+    <button onclick="filterSelection('shirt')">Shirts</button>
+    <button onclick="filterSelection('tank')">Tank Tops</button>
+    <button onclick="filterSelection('sweatshirt')">Sweatshirts</button>
+</div>
+
+<div class="container" id="productContainer">
+
+
+<div class="card shirt">
+    <img src="img/buck_michigan_shirt.jpg">
+    <h3>Buck Michigan</h3>
+    <button onclick="openModal('img/buck_michigan_shirt.jpg','Team Shirt','Bold embroidered team shirt.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/later_g_shirt.jpg">
+    <h3>Later Gator</h3>
+    <button onclick="openModal('img/later_g_shirt.jpg','Team Shirt','Bold embroidered team shirt.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/mama_animal_shirt.jpg">
+    <h3>Mama Animal</h3>
+    <button onclick="openModal('img/mama_animal_shirt.jpg','Mama Animal','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/mama_green_shirt.jpg">
+    <h3>Mama Green</h3>
+    <button onclick="openModal('img/mama_green_shirt.jpg','Mama Green','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/mama_pink_shirt.jpg">
+    <h3>Mama Pink</h3>
+    <button onclick="openModal('img/mama_pink_shirt.jpg','Mama Pink','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/motherhood_shirt.jpg">
+    <h3>Motherhood</h3>
+    <button onclick="openModal('img/motherhood_shirt.jpg','Motherhood','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/ohio_shirt.jpg">
+    <h3>Ohios</h3>
+    <button onclick="openModal('img/ohio_shirt.jpg','Ohios','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/ohio_w_ribbon_shirt.jpg">
+    <h3>Ohio with Ribbon</h3>
+    <button onclick="openModal('img/ohio_w_ribbon_shirt.jpg','Ohios with Ribbon','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/senior_mama_shirt.jpg">
+    <h3>Senior Mama</h3>
+    <button onclick="openModal('img/senior_mama_shirt.jpg','Senior Mama','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/texas_A&M_shirt.jpg">
+    <h3>Texas A&M</h3>
+    <button onclick="openModal('img/texas_A&M_shirt.jpg','Texas A&M','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/texas_ribbon_shirt.jpg">
+    <h3>Texas Ribbon</h3>
+    <button onclick="openModal('img/texas_ribbon_shirt.jpg','Texas Ribbon','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/thankful_shirt.jpg">
+    <h3>Thankful</h3>
+    <button onclick="openModal('img/thankful_shirt.jpg','Thankful','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card shirt">
+    <img src="img/yours_truly_shirt.jpg">
+    <h3>Yours Truly</h3>
+    <button onclick="openModal('img/yours_truly_shirt.jpg','Yours Truly','Cute embroidered design.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card tank">
+    <img src="img/cle_brown_tank.jpg">
+    <h3>Minimal Tank</h3>
+    <button onclick="openModal('img/cle_brown_tank.jpg','Minimal Tank','Lightweight embroidered tank.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card sweatshirt">
+    <img src="img/buckeyes_red_sweatshirt.jpg">
+    <h3>Cozy Sweatshirt</h3>
+    <button onclick="openModal('img/buckeyes_red_sweatshirt.jpg','Cozy Sweatshirt','Warm and stylish embroidery.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+
+<div class="card sweatshirt">
+    <img src="img/peppers_sweatshirt.jpg">
+    <h3>Cozy Sweatshirt</h3>
+    <button onclick="openModal('img/peppers_sweatshirt.jpg','Cozy Sweatshirt','Warm and stylish embroidery.')">View</button>
+    <button onclick="scrollToContact()">Order</button>
+</div>
+```
+
+</div>
+
+<!-- Modal -->
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-img">
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+    </div>
+</div>
+
+<!-- Contact Form -->
+
+<div class="contact" id="contact">
+    <h2>📩 Custom Orders</h2>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea placeholder="Describe your custom embroidery request"></textarea>
+    <button>Submit Request</button>
+</div>
+
+<script>
+function openModal(imageSrc, title, desc) {
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("modal-img").src = imageSrc;
+    document.getElementById("modal-title").innerText = title;
+    document.getElementById("modal-desc").innerText = desc;
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+function filterSelection(category) {
+    let cards = document.getElementsByClassName("card");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].style.display = (category === "all" || cards[i].classList.contains(category)) ? "block" : "none";
+    }
+}
+
+document.getElementById("search").addEventListener("keyup", function() {
+    let filter = this.value.toLowerCase();
+    let cards = document.getElementsByClassName("card");
+
+    for (let i = 0; i < cards.length; i++) {
+        let text = cards[i].innerText.toLowerCase();
+        cards[i].style.display = text.includes(filter) ? "block" : "none";
+    }
+});
+
+function scrollToContact() {
+    document.getElementById("contact").scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
