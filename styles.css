@@ -1,8 +1,8 @@
 body {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    background: linear-gradient(to right, #fdf6f9, #f4f8fb);
-    color: #444;
+    background: linear-gradient(to right, #f7f3f2, #e5e7eb);
+    color: #4b5563;
     line-height: 1.5;
 }
 
@@ -10,17 +10,31 @@ body {
 header {
     text-align: center;
     padding: 50px 20px;
-    background: #f8e8ee;
+    background: #f4b7a4;
 }
 
 header h1 {
     margin: 0;
     font-size: 2.8em;
-    color: #a6788f;
+    color: #4b5563;
 }
 
 header p {
     margin-top: 10px;
+}
+
+.logo {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #f4b7a4;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(75, 85, 99, 0.16);
 }
 
 /* Controls */
@@ -38,12 +52,13 @@ button, input {
 }
 
 button {
-    background: #eac7d5;
+    background: #f4b7a4;
     cursor: pointer;
+    color: #374151;
 }
 
 button:hover {
-    background: #dba4ba;
+    background: #ef9f84;
 }
 
 input {
@@ -83,7 +98,7 @@ input {
 .card h3 {
     padding: 10px;
     margin: 0;
-    color: #a6788f;
+    color: #4b5563;
 }
 
 .card button {
@@ -126,7 +141,7 @@ input {
 /* Contact */
 .contact {
     padding: 40px;
-    background: #f8e8ee;
+    background: #e5e7eb;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -157,8 +172,8 @@ input {
 }
 
 .contact button {
-    background: #a6788f;
-    color: white;
+    background: #f4b7a4;
+    color: #374151;
 }
 
 @media (max-width: 768px) {
