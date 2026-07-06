@@ -128,6 +128,16 @@ input {
     padding: 40px;
     background: #f8e8ee;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contact input, .contact textarea {
@@ -136,6 +146,14 @@ input {
     display: block;
     border-radius: 10px;
     border: 1px solid #ccc;
+    padding: 10px 15px;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+.contact textarea {
+    min-height: 140px;
+    resize: vertical;
 }
 
 .contact button {

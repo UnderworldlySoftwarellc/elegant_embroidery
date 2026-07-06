@@ -126,14 +126,14 @@
 
 <div class="card sweatshirt">
     <img src="img/buckeyes_red_sweatshirt.jpg">
-    <h3>Cozy Sweatshirt</h3>
+    <h3>Buckeyes Sweatshirt</h3>
     <button onclick="openModal('img/buckeyes_red_sweatshirt.jpg','Cozy Sweatshirt','Warm and stylish embroidery.')">View</button>
     <button onclick="scrollToContact()">Order</button>
 </div>
 
 <div class="card sweatshirt">
     <img src="img/peppers_sweatshirt.jpg">
-    <h3>Cozy Sweatshirt</h3>
+    <h3>Peppers Sweatshirt</h3>
     <button onclick="openModal('img/peppers_sweatshirt.jpg','Cozy Sweatshirt','Warm and stylish embroidery.')">View</button>
     <button onclick="scrollToContact()">Order</button>
 </div>
@@ -155,11 +155,13 @@
 <!-- Contact Form -->
 
 <div class="contact" id="contact">
-    <h2>📩 Custom Orders</h2>
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Your Email">
-    <textarea placeholder="Describe your custom embroidery request"></textarea>
-    <button>Submit Request</button>
+    <h2>Custom Orders</h2>
+    <form onsubmit="sendEmail(event)">
+        <input id="customer-name" type="text" placeholder="Your Name" required>
+        <input id="customer-email" type="email" placeholder="Your Email" required>
+        <textarea id="request-details" placeholder="Describe your custom embroidery request" required></textarea>
+        <button type="submit">Submit Request</button>
+    </form>
 </div>
 
 <script>
@@ -179,6 +181,22 @@ function filterSelection(category) {
     for (let i = 0; i < cards.length; i++) {
         cards[i].style.display = (category === "all" || cards[i].classList.contains(category)) ? "block" : "none";
     }
+}
+
+function sendEmail(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("customer-name").value;
+    const email = document.getElementById("customer-email").value;
+    const details = document.getElementById("request-details").value;
+    const subject = encodeURIComponent("Custom embroidery request from " + name);
+    const body = encodeURIComponent(
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n\n" +
+        "Request:\n" + details
+    );
+
+    window.location.href = "mailto:hello@elegantembroidery.com?subject=" + subject + "&body=" + body;
 }
 
 document.getElementById("search").addEventListener("keyup", function() {
